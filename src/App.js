@@ -11,7 +11,7 @@ function App() {
             Get your team in sync, no matter your location. Streamline processes,
             create team rituals, and watch productivity soar.
           </p>
-          <button>
+          <button className="bg-black rounded-lg shadow text-white font-bold hover:opacity-75 transition-all duration-150 pt-3 pb-2 px-6 cursor-pointer">
             Learn more
           </button>
         </article>  
