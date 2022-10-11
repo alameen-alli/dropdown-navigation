@@ -1,3 +1,4 @@
+import { useState } from "react";
 import mobile from "./images/image-hero-mobile.png";
 import desktop from "./images/image-hero-desktop.png";
 import audiophile from "./images/client-audiophile.svg";
@@ -6,15 +7,33 @@ import maker from "./images/client-maker.svg";
 import meet from "./images/client-meet.svg";
 import logo from "./images/logo.svg";
 import chevronDown from "./images/icon-arrow-down.svg"
+import chevronUp from "./images/icon-arrow-up.svg"
 import menuOpen from "./images/icon-menu.svg"
+import closeMenu from "./images/icon-close-menu.svg"
+import todoList from "./images/icon-todo.svg"
+import calendar from "./images/icon-calendar.svg"
+import reminders from "./images/icon-reminders.svg"
+import planning from "./images/icon-planning.svg"
 
 function App() {
-  
+
+  const [openFeatures, setOpenFeatures] = useState(false)
+  const [openCompany, setOpenCompany] = useState(false)
+
   const openMenu = () => {
     const navbar = document.querySelector(".navbar")
+    const menuButton = document.querySelector(".menu-button")
 
     navbar.classList.toggle("open")
+
+    if (navbar.classList.contains("open")) {
+      menuButton.src = closeMenu
+    } else {
+      menuButton.src = menuOpen
+    }
+
   }
+
 
   return (
     <>
@@ -23,16 +42,49 @@ function App() {
         <div>
           <img src={logo} alt="" />
           <nav className="navbar">
-            <div><button>Features <img src={chevronDown} /></button></div>
-            <div><button>Company <img src={chevronDown} /></button></div>
-            <div><button>Careers</button></div>
+            <div>
+              <button onClick={() => setOpenFeatures(!openFeatures)} className="flex items-center justify-start">
+                Features { openFeatures ? <img src={chevronUp} className="ml-2" /> : <img src={chevronDown} className="ml-2" /> }
+              </button>
+              {openFeatures && <ul className="mt-2 ml-3">
+                <li className="flex items-center justify-start text-sm mb-2">
+                  <img src={todoList} className="mr-2" /> Todo List
+                </li>
+                <li className="flex items-center justify-start text-sm mb-2">
+                  <img src={calendar} className="mr-2" /> Calendar
+                </li>
+                <li className="flex items-center justify-start text-sm mb-2">
+                  <img src={reminders} className="mr-2" /> Reminders
+                </li>
+                <li className="flex items-center justify-start text-sm mb-2">
+                  <img src={planning} className="mr-2" /> Planning
+                </li>
+              </ul>}
+            </div>
+            <div>
+              <button onClick={() => setOpenCompany(!openCompany)} className="flex items-center justify-start">
+                Company { openCompany ? <img src={chevronUp} className="ml-2" /> : <img src={chevronDown} className="ml-2" />}
+                </button>
+              {openCompany && <ul className="mt-2 ml-3">
+                <li className="flex items-center justify-start text-sm mb-2">
+                  History
+                </li>
+                <li className="flex items-center justify-start text-sm mb-2">
+                  Our Team
+                </li>
+                <li className="flex items-center justify-start text-sm mb-2">
+                  Blog
+                </li>
+              </ul>}
+            </div>
+            <div className="mb-2 lg:mb-0"><button>Careers</button></div>
             <div><button>About</button></div>
           </nav>
         </div>
 
         <div>
           <button onClick={openMenu}>
-            <img src={menuOpen} alt="" />
+            <img src={menuOpen} alt="" className="menu-button" />
           </button>
         </div>
 
