@@ -1,5 +1,9 @@
 import mobile from "./images/image-hero-mobile.png";
 import desktop from "./images/image-hero-desktop.png";
+import audiophile from "./images/client-audiophile.svg";
+import databiz from "./images/client-databiz.svg";
+import maker from "./images/client-maker.svg";
+import meet from "./images/client-meet.svg";
 
 function App() {
   return (
@@ -14,6 +18,14 @@ function App() {
           <button className="bg-black rounded-lg shadow text-white font-bold hover:opacity-75 transition-all duration-150 pt-3 pb-2 px-6 cursor-pointer">
             Learn more
           </button>
+
+          <ul className="grid grid-cols-4 gap-1 mt-10 place-items-center md:place-items-start">
+            <li><img src={databiz} className="w-16 md:w-24" /></li>
+            <li><img src={audiophile} className="w-16 md:w-24" /></li>
+            <li><img src={maker} className="w-16 md:w-24" /></li>
+            <li><img src={meet} className="w-16 md:w-24" /></li>
+          </ul>
+
         </article>  
 
         <article>
