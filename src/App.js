@@ -9,6 +9,13 @@ import chevronDown from "./images/icon-arrow-down.svg"
 import menuOpen from "./images/icon-menu.svg"
 
 function App() {
+  
+  const openMenu = () => {
+    const navbar = document.querySelector(".navbar")
+
+    navbar.classList.toggle("open")
+  }
+
   return (
     <>
 
@@ -24,7 +31,7 @@ function App() {
         </div>
 
         <div>
-          <button>
+          <button onClick={openMenu}>
             <img src={menuOpen} alt="" />
           </button>
         </div>
